@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/nav.js"></script>
+    <style>
+        body{
+        }
+        nav.navTop.pageTop{
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid transparent;
+        }
+        .navTop.pageTop .nav-in>.navTab>li{
+            border: none;
+        }
+        .navTop.pageTop .nav-in>.navTab>li>a{
+            color: #fff;
+            transition: 0.25s;
+        }
+        .navTop.pageTop .nav-in>.navTab>li>a:hover{
+            font-weight: bold;
+            background: rgba(0,0,0,0.4);
+        }
+        .navTop.pageTop .nav-in>.navRight>ul>li>a{
+            color: #fff;
+        }
+        .navTop.pageTop .nav-in>.navRight>ul>li>a:hover{
+            color: #5cb85c;
+        }
+        .navTop.pageTop .nav-in>.navRight>ul>li{
+            color: #fff;
+        }
+        .main{
+            width: 100%;
+        }
+        .main>.mainTop{
+            width: 100%;
+            height: 520px;
+            background: pink;
+        }
+        .main>.mainContent{
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+        .mainContent>.title{
+            width: 100%;
+            position: relative;
+            text-align: center;
+            height: 60px;
+            line-height: 60px;
+        }
+        .mainContent>.title::after{
+            display: block;
+            position: absolute;
+            top: 28px;
+            width: 44%;
+            content: "";
+            border-top: 1px solid #ededed;
+            left: 0;
+        }
+        .mainContent>.title::before{
+            display: block;
+            position: absolute;
+            top: 28px;
+            width: 44%;
+            content: "";
+            border-top: 1px solid #ededed;
+            right: 0;
+        }
+        .mainContent>.title>span{
+            display: inline-block;
+            font-size: 16px;
+            color: #999;
+        }
+        .recommend-container{
+            width: 1200px;
+            margin: 10px auto;
+        }
+        .recommend-container>div{
+            width: 300px;
+            height: 300px;
+            padding: 2px;
+            background: #fff;
+            box-sizing: border-box;
+            float: left;
+        }
+        .recommend-container>.imageBox{
+            position: relative;
+        }
+        .recommend-container>.imageBox>a{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+        .recommend-container>.imageBox>a>img{
+            width: 296px;
+            height: 296px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .recommend-container>.imageBox>a>img:hover{
+            opacity: 0.8;
+        }
+        .recommend-container>.infoBox{
+            padding: 0 2px;
+        }
+        .recommend-container>.infoBox>div{
+            width: 100%;
+            height: 146px;
+            padding: 0 16px;
+            box-sizing: border-box;
+            margin-bottom: 4px;
+            background: #fafafa;
+            position: relative;
+            margin-left: -2px;
+        }
+        .recommend-container>.infoBox>.bottom{
+            margin: 0;
+        }
+        .recommend-container>.infoBox>div:nth-child(1){
+            margin-top: -5px;
+        }
+        .recommend-container>.infoBox>div:hover{
+            background: #f5f5f5;
+        }
+        .recommend-container>.infoBox>div>.type{
+            width: 100%;
+            height: 30px;
+            color: #ddd;
+            font-size: 40px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-family: fzjx;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .recommend-container>.infoBox>div>.line{
+            width: 120px;
+            display: inline-block;
+            height: 1px;
+            border-bottom: 1px solid #ddd;
+        }
+        .recommend-container>.infoBox>div>.title{
+            color: #222;
+            margin-bottom: 3px;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+        .recommend-container>.infoBox>div>.title>a{
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 20px;
+            font-size: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            box-sizing: border-box;
+            width: 100%;
+            letter-spacing: 1px;
+            transition: 0.25s;
+        }
+        .recommend-container>.infoBox>div>.title>a:hover{
+            color: #5cb85c;
+        }
+        .recommend-container>.infoBox>div>.data{
+            font-size: 12px;
+            color: #999;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .recommend-container>.infoBox>div>.publisher{
+            font-size: 14px;
+            color: #999;
+        }
+        .recommend-container>.infoBox >div>.publisher>a{
+            color: #5cb85c;
+            text-decoration: none;
+        }
+        .recommend-container>.infoBox>div>.publisher>a:hover{
+            text-decoration: underline;
+        }
+        .recommend-container>.infoBox>div>.iconfont{
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            z-index: 9;
+            transform: scaleY(2) rotate(-180deg) translateY(50%);
+            color: #fafafa;
+        }
+        .recommend-container>.infoBox>.bottom{
+            text-align: right;
+        }
+        .recommend-container>.infoBox>.top>.iconfont{
+            left: -13px;
+        }
+        .recommend-container>.infoBox>.bottom>.iconfont{
+            right: -12px;
+            transform: scaleY(2) rotate(0) translateY(-50%);
+        }
+        .recommend-container>div>.info{
+            position: absolute;
+            left: 30px;
+            bottom: 20px;
+            background: rgba(0,0,0,.4);
+            width: auto;
+            height: 56px;
+            padding: 8px 16px;
+            margin-bottom: 8px;
+            box-sizing: border-box;
+            z-index: 19;
+            display: none;
+        }
+        .recommend-container>div.innerInfo>.info{
+            display: block;
+        }
+        .recommend-container>div>.info>.type{
+            position: absolute;
+            left: -30px;
+            width: 30px;
+            height: 56px;
+            padding: 0;
+            top: 0;
+            background-color: rgba(50,50,50,.4);
+            background-position: -236px 7px;
+            border: 0 none;
+            box-sizing: border-box;
+            z-index: 19;
+        }
+        .recommend-container>div>.info>.type>span{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            vertical-align: center;
+            color: rgba(255,255,255,0.6);
+            margin-top: 5px;
+        }
+        .recommend-container>div>.info>h2{
+            margin: 0;
+            font-size: 18px;
+            line-height: 20px;
+        }
+        .recommend-container>div>.info>h2>a{
+            text-decoration: none;
+            color: #fff;
+            transition: 0.25s;
+        }
+        .recommend-container>div>.info>h2>a:hover{
+            color: #5cb85c;
+        }
+        .recommend-container>div>.info>.data{
+            line-height: 1.35em;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 3px;
+        }
+        .recommend-container>.videoBox{
+            position: relative;
+        }
+        .recommend-container>.videoBox>a{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+        .recommend-container>.videoBox>a>img{
+            width: 296px;
+            height: 296px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .recommend-container>.videoBox>.iconfont{
+            position: absolute;
+            color: rgba(255,255,255,0.5);
+            left: 10px;
+            top: 10px;
+            font-size: 30px;
+            transition: 0.25s;
+        }
+        .recommend-container>.videoBox>.playIcon{
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+        }
+        .recommend-container>.videoBox:hover .iconfont{
+            opacity: 0;
+        }
+        .recommend-container>.videoBox:hover .iconfont.playIcon{
+            opacity: 1;
+        }
+        .recommend-container>.articleBox{
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 200% 200%;
+            overflow: hidden;
+            box-sizing: border-box;
+            z-index: 1;
+            position: relative;
+            width: 296px;
+            height: 296px;
+            margin: 2px;
+            padding: 0;
+        }
+        .recommend-container>.articleBox::before{
+            content: "";
+            width:100%;
+            height:100%;
+            position: absolute;
+            left:0;
+            top:0;
+            background: inherit;
+            filter: blur(10px);
+            z-index: -2;
+
+        }
+        .recommend-container>.articleBox>.content{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 10;
+            padding: 16px 16px;
+            color: #ddd;
+            box-sizing: border-box;
+            font-size: 14px;
+            line-height: 2em;
+            background: rgba(0,0,0,0.3);
+        }
+        .recommend-container>.articleBox>.content>.title>a{
+            font-size: 18px;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            width: 250px;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.25s;
+        }
+        .recommend-container>.articleBox>.content>.title>a:hover{
+            color: #5cb85c;
+        }
+        .mainBottom{
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            background: #eee;
+            box-sizing: border-box;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="mainTop">
+
+        </div>
+        <div class="mainContent">
+            <div class="title">
+                <span>为您推荐</span>
+            </div>
+            <div class="recommend-container">
+                <!--图片1-->
+                <div class="imageBox">
+                    <a href="image.html" target="_blank"><img src="images/bg.jpg" alt=""></a>
+                    <div class="info">
+                        <div class="type">
+                            <span>图片</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div class="top">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            图片
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="image.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">派大星</a>
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            图片
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="image.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">海绵宝宝</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="imageBox">
+                    <a href="image.html" target="_blank"><img src="images/bg.jpg" alt=""></a>
+                    <div class="info">
+                        <div class="type">
+                            <span>图片</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="imageBox innerInfo">
+                    <a href="image.html" target="_blank"><img src="images/bg.jpg" alt=""></a>
+                    <div class="info">
+                        <div class="type">
+                            <span>图片</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <!--图片2-->
+                <div class="imageBox innerInfo">
+                    <a href="image.html" target="_blank"><img src="images/bg.jpg" alt=""></a>
+                    <div class="info">
+                        <div class="type">
+                            <span>图片</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="imageBox">
+                    <a href="image.html" target="_blank"><img src="images/bg.jpg" alt=""></a>
+                    <div class="info">
+                        <div class="type">
+                            <span>图片</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div class="top">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            图片
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="image.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">派大星</a>
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            图片
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="image.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">海绵宝宝</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="imageBox">
+                    <a href="image.html" target="_blank"><img src="images/bg.jpg" alt=""></a>
+                    <div class="info">
+                        <div class="type">
+                            <span>图片</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <!--视频1-->
+                <div class="videoBox">
+                    <a href="video.html" target="_blank"><img src="images/indexBg03.jpg" alt=""></a>
+                    <span class="videoIcon iconfont icon-shipinbofang"></span>
+                    <span class="playIcon iconfont icon-bofang"></span>
+                    <div class="info">
+                        <div class="type">
+                            <span>视频</span>
+                        </div>
+                        <h2><a href="video.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div class="top">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            视频
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">派大星</a>
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            视频
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">海绵宝宝</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="videoBox">
+                    <a href="video.html" target="_blank"><img src="images/indexBg03.jpg" alt=""></a>
+                    <span class="videoIcon iconfont icon-shipinbofang"></span>
+                    <span class="playIcon iconfont icon-bofang"></span>
+                    <div class="info">
+                        <div class="type">
+                            <span>视频</span>
+                        </div>
+                        <h2><a href="video.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="videoBox innerInfo">
+                    <a href="video.html" target="_blank"><img src="images/indexBg03.jpg" alt=""></a>
+                    <span class="videoIcon iconfont icon-shipinbofang"></span>
+                    <span class="playIcon iconfont icon-bofang"></span>
+                    <div class="info">
+                        <div class="type">
+                            <span>视频</span>
+                        </div>
+                        <h2><a href="video.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <!--视频2-->
+                <div class="videoBox innerInfo">
+                    <a href="video.html" target="_blank"><img src="images/indexBg03.jpg" alt=""></a>
+                    <span class="videoIcon iconfont icon-shipinbofang"></span>
+                    <span class="playIcon iconfont icon-bofang"></span>
+                    <div class="info">
+                        <div class="type">
+                            <span>视频</span>
+                        </div>
+                        <h2><a href="video.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="videoBox">
+                    <a href="video.html" target="_blank"><img src="images/indexBg03.jpg" alt=""></a>
+                    <span class="videoIcon iconfont icon-shipinbofang"></span>
+                    <span class="playIcon iconfont icon-bofang"></span>
+                    <div class="info">
+                        <div class="type">
+                            <span>视频</span>
+                        </div>
+                        <h2><a href="video.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div class="top">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            视频
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">派大星</a>
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            视频
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">海绵宝宝</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="videoBox">
+                    <a href="video.html" target="_blank"><img src="images/indexBg03.jpg" alt=""></a>
+                    <span class="videoIcon iconfont icon-shipinbofang"></span>
+                    <span class="playIcon iconfont icon-bofang"></span>
+                    <div class="info">
+                        <div class="type">
+                            <span>视频</span>
+                        </div>
+                        <h2><a href="video.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <!--文章1-->
+                <div class="articleBox" style="background-image: url('images/bg.jpg');">
+                    <div class="content">
+                        <div class="title"><a href="readArticle.html" target="_blank">《寂静苍穹下》：写一本旅行情书，给自己一次救赎 </a></div>
+                        <p>旅行，对你来说意味着什么？也许是从朝九晚五的日子中逃离，或者是探索这个世界的一种乐趣。对于《寂静苍穹下》的作者李初初来说，旅行是一次疗伤和救赎——走在路上，放空自己，和过去的自己对话，站在上帝的视角去审视过去。
+                            这本书的时间跨度从2000年到2007年，从西北的白马雪山写到浩瀚沙海的巴丹吉林……读完这本书，我跟着李初初的笔尖，穿梭在轰鸣的前往新疆的火车上，窥视见稻城亚丁的雪山胴体，攀爬到西藏拉萨的寺庙之巅。
+                            《寂静苍穹下》不是一本传统意义上的旅行书，而是一本旅行散文。如果你想在这本书里面找到实用的旅行攻略，那么可能会让你失望。但在工作的夜晚捧起这本书，能够让你全身心的放松，投入到另外一个人的情感世界和旅行故事中。
+                            作者李初初在前言里写道：“我跟这个世界，有过情人般的争吵”，但在我看来他的旅程中没有丝毫的争吵，更多的是自己的救赎以及和这个世界和解。
+                            旅行的散文，带你穿梭在雪山之巅</p>
+                    </div>
+                    <div class="info">
+                        <div class="type">
+                            <span>文章</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div class="top">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            文章
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">派大星</a>
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            文章
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">海绵宝宝</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="articleBox" style="background-image: url('images/bg.jpg');">
+                    <div class="content">
+                        <div class="title"><a href="readArticle.html" target="_blank">《寂静苍穹下》：写一本旅行情书，给自己一次救赎 </a></div>
+                        <p>旅行，对你来说意味着什么？也许是从朝九晚五的日子中逃离，或者是探索这个世界的一种乐趣。对于《寂静苍穹下》的作者李初初来说，旅行是一次疗伤和救赎——走在路上，放空自己，和过去的自己对话，站在上帝的视角去审视过去。
+                            这本书的时间跨度从2000年到2007年，从西北的白马雪山写到浩瀚沙海的巴丹吉林……读完这本书，我跟着李初初的笔尖，穿梭在轰鸣的前往新疆的火车上，窥视见稻城亚丁的雪山胴体，攀爬到西藏拉萨的寺庙之巅。
+                            《寂静苍穹下》不是一本传统意义上的旅行书，而是一本旅行散文。如果你想在这本书里面找到实用的旅行攻略，那么可能会让你失望。但在工作的夜晚捧起这本书，能够让你全身心的放松，投入到另外一个人的情感世界和旅行故事中。
+                            作者李初初在前言里写道：“我跟这个世界，有过情人般的争吵”，但在我看来他的旅程中没有丝毫的争吵，更多的是自己的救赎以及和这个世界和解。
+                            旅行的散文，带你穿梭在雪山之巅</p>
+                    </div>
+                    <div class="info">
+                        <div class="type">
+                            <span>文章</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="articleBox innerInfo" style="background-image: url('images/bg.jpg');">
+                    <div class="content">
+                        <div class="title"><a href="readArticle.html" target="_blank">《寂静苍穹下》：写一本旅行情书，给自己一次救赎 </a></div>
+                        <p>旅行，对你来说意味着什么？也许是从朝九晚五的日子中逃离，或者是探索这个世界的一种乐趣。对于《寂静苍穹下》的作者李初初来说，旅行是一次疗伤和救赎——走在路上，放空自己，和过去的自己对话，站在上帝的视角去审视过去。
+                            这本书的时间跨度从2000年到2007年，从西北的白马雪山写到浩瀚沙海的巴丹吉林……读完这本书，我跟着李初初的笔尖，穿梭在轰鸣的前往新疆的火车上，窥视见稻城亚丁的雪山胴体，攀爬到西藏拉萨的寺庙之巅。
+                            《寂静苍穹下》不是一本传统意义上的旅行书，而是一本旅行散文。如果你想在这本书里面找到实用的旅行攻略，那么可能会让你失望。但在工作的夜晚捧起这本书，能够让你全身心的放松，投入到另外一个人的情感世界和旅行故事中。
+                            作者李初初在前言里写道：“我跟这个世界，有过情人般的争吵”，但在我看来他的旅程中没有丝毫的争吵，更多的是自己的救赎以及和这个世界和解。
+                            旅行的散文，带你穿梭在雪山之巅</p>
+                    </div>
+                    <div class="info">
+                        <div class="type">
+                            <span>文章</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <!--文章2-->
+                <div class="articleBox innerInfo" style="background-image: url('images/bg.jpg');">
+                    <div class="content">
+                        <div class="title"><a href="readArticle.html" target="_blank">《寂静苍穹下》：写一本旅行情书，给自己一次救赎 </a></div>
+                        <p>旅行，对你来说意味着什么？也许是从朝九晚五的日子中逃离，或者是探索这个世界的一种乐趣。对于《寂静苍穹下》的作者李初初来说，旅行是一次疗伤和救赎——走在路上，放空自己，和过去的自己对话，站在上帝的视角去审视过去。
+                            这本书的时间跨度从2000年到2007年，从西北的白马雪山写到浩瀚沙海的巴丹吉林……读完这本书，我跟着李初初的笔尖，穿梭在轰鸣的前往新疆的火车上，窥视见稻城亚丁的雪山胴体，攀爬到西藏拉萨的寺庙之巅。
+                            《寂静苍穹下》不是一本传统意义上的旅行书，而是一本旅行散文。如果你想在这本书里面找到实用的旅行攻略，那么可能会让你失望。但在工作的夜晚捧起这本书，能够让你全身心的放松，投入到另外一个人的情感世界和旅行故事中。
+                            作者李初初在前言里写道：“我跟这个世界，有过情人般的争吵”，但在我看来他的旅程中没有丝毫的争吵，更多的是自己的救赎以及和这个世界和解。
+                            旅行的散文，带你穿梭在雪山之巅</p>
+                    </div>
+                    <div class="info">
+                        <div class="type">
+                            <span>文章</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="articleBox" style="background-image: url('images/bg.jpg');">
+                    <div class="content">
+                        <div class="title"><a href="readArticle.html" target="_blank">《寂静苍穹下》：写一本旅行情书，给自己一次救赎 </a></div>
+                        <p>旅行，对你来说意味着什么？也许是从朝九晚五的日子中逃离，或者是探索这个世界的一种乐趣。对于《寂静苍穹下》的作者李初初来说，旅行是一次疗伤和救赎——走在路上，放空自己，和过去的自己对话，站在上帝的视角去审视过去。
+                            这本书的时间跨度从2000年到2007年，从西北的白马雪山写到浩瀚沙海的巴丹吉林……读完这本书，我跟着李初初的笔尖，穿梭在轰鸣的前往新疆的火车上，窥视见稻城亚丁的雪山胴体，攀爬到西藏拉萨的寺庙之巅。
+                            《寂静苍穹下》不是一本传统意义上的旅行书，而是一本旅行散文。如果你想在这本书里面找到实用的旅行攻略，那么可能会让你失望。但在工作的夜晚捧起这本书，能够让你全身心的放松，投入到另外一个人的情感世界和旅行故事中。
+                            作者李初初在前言里写道：“我跟这个世界，有过情人般的争吵”，但在我看来他的旅程中没有丝毫的争吵，更多的是自己的救赎以及和这个世界和解。
+                            旅行的散文，带你穿梭在雪山之巅</p>
+                    </div>
+                    <div class="info">
+                        <div class="type">
+                            <span>文章</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div class="top">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            文章
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">派大星</a>
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <span class="iconfont icon-sanjiao"></span>
+                        <p class="type">
+                            文章
+                        </p>
+                        <span class="line"></span>
+                        <p class="title">
+                            <a href="video.html" target="_blank">标题标题</a>
+                        </p>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                        <p class="publisher">
+                            来自 <a href="userPage.html" target="_blank">海绵宝宝</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="articleBox" style="background-image: url('images/bg.jpg');">
+                    <div class="content">
+                        <div class="title"><a href="readArticle.html" target="_blank">《寂静苍穹下》：写一本旅行情书，给自己一次救赎 </a></div>
+                        <p>旅行，对你来说意味着什么？也许是从朝九晚五的日子中逃离，或者是探索这个世界的一种乐趣。对于《寂静苍穹下》的作者李初初来说，旅行是一次疗伤和救赎——走在路上，放空自己，和过去的自己对话，站在上帝的视角去审视过去。
+                            这本书的时间跨度从2000年到2007年，从西北的白马雪山写到浩瀚沙海的巴丹吉林……读完这本书，我跟着李初初的笔尖，穿梭在轰鸣的前往新疆的火车上，窥视见稻城亚丁的雪山胴体，攀爬到西藏拉萨的寺庙之巅。
+                            《寂静苍穹下》不是一本传统意义上的旅行书，而是一本旅行散文。如果你想在这本书里面找到实用的旅行攻略，那么可能会让你失望。但在工作的夜晚捧起这本书，能够让你全身心的放松，投入到另外一个人的情感世界和旅行故事中。
+                            作者李初初在前言里写道：“我跟这个世界，有过情人般的争吵”，但在我看来他的旅程中没有丝毫的争吵，更多的是自己的救赎以及和这个世界和解。
+                            旅行的散文，带你穿梭在雪山之巅</p>
+                    </div>
+                    <div class="info">
+                        <div class="type">
+                            <span>文章</span>
+                        </div>
+                        <h2><a href="image.html" target="_blank">美食摄影 复古</a></h2>
+                        <p class="data">
+                            <span class="likeNum">3569</span> 浏览
+                            <span class="watchNum">54</span> 喜欢
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainBottom">
+            <p>All rights reserved © 2019 Anke</p>
+        </div>
+    </div>
+
+<script>
+    $(function () {
+
+
+        //改变导航条样式
+        changeNav();
+        function changeNav(){
+            $(window).scroll(function () {
+                var scrollTop = $(document).scrollTop();
+                if(scrollTop >= 400){
+                    $(".navTop").removeClass("pageTop");
+                }else{
+                    $(".navTop").addClass("pageTop");
+                }
+            });
+        }
+
+
+        //设置articleBox内部文章的字数
+        $.each($(".articleBox").find(".content"), function (index, content) {
+            var wordNum = $(content).children("p").text().length;
+            if(wordNum > 80 && $(content).parents(".articleBox").hasClass("innerInfo")){
+                wordNum = $(content).children("p").text().substring(0, 80);
+                $(content).children("p").text(wordNum);
+                $(content).children("p").append($("<span>……</span>"))
+            }
+            if(wordNum > 160 && !$(content).parents(".articleBox").hasClass("innerInfo")){
+                wordNum = $(content).children("p").text().substring(0, 160);
+                $(content).children("p").text(wordNum);
+                $(content).children("p").append($("<span>……</span>"))
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

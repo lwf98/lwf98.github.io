@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人界面-视频</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/userPage-video.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/userPage.js"></script>
+</head>
+<body>
+<div class="userPage">
+    <div class="userPage-top">
+        <div class="userPage-top-left">
+            <div class="head">
+                <img src="images/cat.jpg" alt="">
+            </div>
+            <div class="info">
+                <h4 class="nickName">
+                    海绵宝宝
+                </h4>
+                <p class="intro">
+                    鹅，鹅，鹅，曲项向天歌，白毛浮绿水，红掌拨清波。
+                </p>
+            </div>
+
+        </div>
+        <div class="userPage-top-right">
+            <!--<button class="sendMessage"><a href="message.html" target="_blank">私信</a></button>-->
+            <button href="userSet.html" class="userSet"><a href="userSet.html" target="_blank">个人设置 <span class="iconfont icon-sanjiao"></span></a></button>
+        </div>
+    </div>
+    <div class="nav">
+        <ul>
+            <li class="nav-home"><a href="userPage.html">主页</a></li>
+            <li class="nav-pic"><a href="userPage-img.html">图片</a></li>
+            <li class="nav-video selected"><a href="userPage-video.html">视频</a></li>
+            <li class="nav-diary"><a href="userPage-article.html">文章</a></li>
+        </ul>
+        <div>
+            <p>收到的赞</p>
+            <span>1000</span>
+        </div>
+    </div>
+    <div class="userPage-content">
+        <ul class="videoList">
+            <li class="videoBox">
+                <div class="videoBox-in">
+                    <div class="box">
+                        <a href="video.html" target="_blank"><video src="video/01.mp4" width="370px" height="220px" muted></video></a>
+                        <span class="iconfont icon-shipinbofang  playIcon"></span>
+                        <p class="progressBar"><span class="progress"></span></p>
+                    </div>
+                    <div class="bottomInfo">
+                        <p class="videoTitle"><a href="video.html" target="_blank">因为是脆弱的蓝色 因为是脆弱的蓝色 因为是脆弱的蓝色</a></p>
+                        <!--当登陆者时本人时deleteIcon显示-->
+                        <p class="publisher"><a href="#" target="_blank">By / 章鱼哥</a> <span class="deleteIcon iconfont icon-shanchu"></span></p>
+                        <p class="data">
+                            <span class="playNum">3300</span> 次播放 | 评论:
+                            <span class="comNum">1200</span> | 喜欢:
+                            <span class="likeNum">1000</span>
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <p class="noContent">
+            这里还没有被上传的内容
+        </p>
+    </div>
+</div>
+<div class="confirm">
+    <div>
+        <img src="images/confirm-img.png" alt="">
+    </div>
+    <p></p>
+    <div class="btnGroup">
+        <span>取消</span>
+        <span>确认</span>
+    </div>
+</div>
+<div class="hint">
+    <div>
+        <img src="images/hint-ok.png" alt="">
+    </div>
+    <p></p>
+</div>
+</body>
+</html>
